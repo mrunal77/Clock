@@ -66,7 +66,7 @@
 <body class="light-mode">
     <div class="card text-center">
         <h1 class="mb-4">Current Time & Date</h1>
-        <div id="utcClock" class="time"></div>
+        <div id="localClock" class="time"></div>
         <div id="dateTimeDisplay" class="date"></div>
         <div id="utcTimeDisplay" class="utc"></div>
     </div>
@@ -80,7 +80,7 @@
 
     <script>
         const dateTimeDisplay = document.getElementById('dateTimeDisplay');
-        const utcClock = document.getElementById('utcClock');
+        const localClock = document.getElementById('localClock');
         const utcTimeDisplay = document.getElementById('utcTimeDisplay');
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
@@ -92,7 +92,7 @@
             const localTime = now.toLocaleTimeString('en-GB', { hour12: false });
             const localDate = now.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             dateTimeDisplay.textContent = localDate;
-            utcClock.textContent = localTime;
+            localClock.textContent = localTime;
         }
 
         // Function to update UTC time
