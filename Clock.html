@@ -38,23 +38,29 @@
             background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
             color: #ffffff;
         }
+        .time, .date, .utc {
+            transition: color 0.3s;
+        }
         .time {
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 15px;
-            color: #007bff;
         }
         .date {
             font-size: 1.8rem;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #28a745;
         }
         .utc {
             font-size: 1.2rem;
             font-weight: bold;
             margin-top: 10px;
-            color: #ff6347;
+        }
+        .light-mode .time, .light-mode .date, .light-mode .utc {
+            color: #212529; /* Dark gray for light mode */
+        }
+        .dark-mode .time, .dark-mode .date, .dark-mode .utc {
+            color: #e0e0e0; /* Light gray for dark mode */
         }
         #themeToggleBtn {
             position: absolute;
@@ -62,6 +68,7 @@
             right: 20px;
         }
     </style>
+    
 </head>
 <body class="dark-mode">
     <div class="card text-center">
