@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DateTime Difference Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body.dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>DateTime Difference Calculator</h2>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="themeSwitch">
+      <label class="form-check-label" for="themeSwitch">Dark Mode</label>
+    </div>
+  </div>
+
+  <div class="card shadow p-4">
+    <div class="mb-3">
+      <label for="datetime1" class="form-label">Start Date & Time</label>
+      <input type="date" class="form-control" id="datetime1">
+    </div>
+    <div class="mb-3">
+      <label for="datetime2" class="form-label">End Date & Time</label>
+      <input type="date" class="form-control" id="datetime2">
+    </div>
+    <button class="btn btn-primary" onclick="calculateDetailedDifference()">Get Difference</button>
+    <div class="mt-4" id="result" style="font-size: 1.2rem;"></div>
+  </div>
+</div>
+
+<script>
+  function calculateDetailedDifference() {
+    const dt1 = new Date(document.getElementById('datetime1').value);
+    const dt2 = new Date(document.getElementById('datetime2').value);
+
+    if (!dt1 || !dt2 || isNaN(dt1) || isNaN(dt2)) {
+      document.getElementById('result').innerHTML = '<span class="text-danger">Please enter valid date and time.</span>';
+      return;
+    }
+
+    let start = dt1 < dt2 ? dt1 : dt2;
+    let end = dt1 < dt2 ? dt2 : dt1;
+
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+    let days = end.getDate() - start.getDate();
+    let hours = end.getHours() - start.getHours();
+    let minutes = end.getMinutes() - start.getMinutes();
+    let seconds = end.getSeconds() - start.getSeconds();
+
+    if (seconds < 0) {
+      seconds += 60;
+      minutes--;
+    }
+    if (minutes < 0) {
+      minutes += 60;
+      hours--;
+    }
+    if (hours < 0) {
+      hours += 24;
+      days--;
+    }
+    if (days < 0) {
+      const tempDate = new Date(end.getFullYear(), end.getMonth(), 0);
+      days += tempDate.getDate();
+      months--;
+    }
+    if (months < 0) {
+      months += 12;
+      years--;
+    }
+
+    document.getElementById('result').innerHTML = `
+      Difference: <strong>
+      ${years} year(s), ${months} month(s), ${days} day(s),<br/>
+      ${hours} hour(s), ${minutes} minute(s), ${seconds} second(s)
+      </strong>
+    `;
+  }
+
+  document.getElementById('themeSwitch').addEventListener('change', function () {
+    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('bg-light');
+  });
+</script>
+
+</body>
+</html>
