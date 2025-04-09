@@ -5,3 +5,5 @@ Visit Date Diff Page: <a href = "https://mrunal77.github.io/Clock/DateDiff.html"
 Visit Music Play Page: <a href = "https://mrunal77.github.io/Clock/MusicPlay.html" target="_blank"> Music Play Here</a>
 
 Visit Local Video Play Page: <a href = "https://mrunal77.github.io/Clock/VideoPlay.html" target="_blank"> Local Video Play Here</a>
+
+Visit Json Beautify Page: <a href = "https://mrunal77.github.io/Clock/JSONBeautify.html" target="_blank"> JSON Beautifiy Here</a>
